@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        todo list
+    </title>
+    <style>
+      .head{
+        text-align: center;
+        font-size: larger;
+        background-color: yellow;
+      }
+      .butt{
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: green;
+        border: none;
+        color: white;
+        
+      }
+      .bitt{
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: rgb(119, 9, 9);
+        color: white;
+        border: none;
+      }
+      .result,
+      .all{
+        display: grid;
+        grid-template-columns: 200px 150px 100px;
+        column-gap: 15px;
+        row-gap: 15px;
+        padding: 20px;
+      }
+
+
+    </style>
+</head>
+<body>
+    <div class="head">Todo list number </div>
+    <div class="all">
+    <input placeholder="Todo name" class="put">
+    <input type="date" class="cut" onkeydown="console.log(event.key);
+       if(event.key==='Enter'){
+        work();
+       }
+    ">
+    <button onclick="
+    work();
+    " class="butt">Add</button>
+    <div class="result"></div>
+  </div>
+
+    <script>
+          const array = [];
+          const denak =[];
+          function done() {
+          let arraylist ='';
+          for(let i = 0; i<array.length; i++){
+            const todo = array[i];
+            const tum = denak[i];
+            const html = `<div>
+                ${todo}</div>
+                <div> ${tum}</div>
+                <button onclick="
+                array.splice(${i},1)
+                denak.splice(${i},1)
+                done();
+                "class="bitt">delete</button>
+                `;
+            arraylist += html;
+          }
+          document.querySelector('.result').innerHTML = arraylist;
+        }
+        function work(){
+        element = document.querySelector('.put');
+        tarik = document.querySelector('.cut');
+       const list = element.value;
+       const din = tarik.value;
+        array.push(list);
+        denak.push(din);
+      element.value ='';
+      denak.value = '';
+      done();
+    }
+    </script>
+
+</body>
+</html>
